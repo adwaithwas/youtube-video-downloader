@@ -1,0 +1,15 @@
+# step 1: create a virtual environment
+python -m venv venv_name
+
+# step 2: activate the virtual environment
+# for windows
+venv_name\Scripts\activate
+
+# for linux/mac
+source venv_name/bin/activate
+
+# step 3: install packages (inside the activated virtual environment)
+pip install package_name
+
+# step 4: deactivate the virtual environment when done
+deactivate

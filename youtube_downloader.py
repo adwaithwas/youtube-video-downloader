@@ -1,5 +1,6 @@
 from tkinter import *
-from pytube import YouTube
+# from pytube import YouTube
+from pytubefix import YouTube
 
 class Downloader:
     def __init__(self):
@@ -30,9 +31,10 @@ class Downloader:
         
     def downloader(self):
         link = self.link_input.get()
-        link = YouTube(link)
+        yt = YouTube(link)
+        print(yt.title)
 
-        video = link.streams.get_highest_resolution()
+        video = yt.streams.get_highest_resolution()
         video.download()
 
 
