@@ -30,6 +30,7 @@ class Downloader:
         
     def downloader(self):
         link = self.link_input.get()
+        link = YouTube(link)
 
         video = link.streams.get_highest_resolution()
         video.download()
