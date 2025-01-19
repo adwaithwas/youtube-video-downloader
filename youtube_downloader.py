@@ -1,6 +1,11 @@
 from tkinter import *
+from tkinter import messagebox
 # from pytube import YouTube
 from pytubefix import YouTube
+
+'''
+SAMPLE YOUTUBE VIDEO LINK: https://www.youtube.com/watch?v=K4TOrB7at0Y
+'''
 
 class Downloader:
     def __init__(self):
@@ -30,12 +35,21 @@ class Downloader:
         download_button.pack(pady=(10,10))
         
     def downloader(self):
-        link = self.link_input.get()
-        yt = YouTube(link)
-        print(yt.title)
+        try:
+            link = self.link_input.get()
+                
+            yt = YouTube(link)
+            print(yt.title)
 
-        video = yt.streams.get_highest_resolution()
-        video.download()
+            video = yt.streams.get_highest_resolution()
+            video.download("youtube-downloads")
+            
+            messagebox.showinfo("Sucess","Your youtube video was downloaded to the downloads folder")
+            
+            
+        except Exception as e:
+            print(f"Error: {e}")
+            messagebox.showerror("Error","Please enter a valid youtube link")
 
 
 
